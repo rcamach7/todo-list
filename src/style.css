@@ -1,0 +1,40 @@
+html {
+    background-color: #9cdaed;
+    height: 100%;
+    margin: 0 auto;
+    font-family: "Lucida Grande", serif;
+}
+
+body {
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+    color: white;
+
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.title h1 {
+    margin: 0 auto;
+}
+
+.contentContainer {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.sidebar {
+    width: 50px;
+    height: 500px;
+
+    padding: 10px;
+    border-right: black solid 2px;
+}
+
+.mainContainer {
+    padding: 10px;
+}
