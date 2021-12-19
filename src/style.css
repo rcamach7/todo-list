@@ -9,6 +9,7 @@ body {
     margin: 0 auto;
 }
 
+/*Title Styling*/
 .title {
     text-align: center;
     color: white;
@@ -21,6 +22,7 @@ body {
     margin: 0 auto;
 }
 
+/*Main Website Contents*/
 .contentContainer {
     display: flex;
     margin: 0 auto;
@@ -28,13 +30,52 @@ body {
 }
 
 .sidebar {
-    width: 50px;
+    width: 100px;
     height: 500px;
 
-    padding: 10px;
     border-right: black solid 2px;
 }
 
-.mainContainer {
+#notesContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    width: 100%;
     padding: 10px;
+}
+
+form {
+    text-align: center;
+    color: white;
+
+    display: none;
+    position: fixed; /* Stay in place */
+    width: 100%; /* Full width */
+    height: 100%;
+    padding-top: 10%;
+
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+#newNote {
+    margin-top: 20px;
+    width: 250px;
+    background-color: #000000;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/*Note Container Styling*/
+
+.noteCard {
+    width: 200px;
+    height: 200px;
+
+    border: red solid 2px;
 }
