@@ -16,6 +16,9 @@ body {
 
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+
+    padding: 10px;
 }
 
 .title h1 {
@@ -29,7 +32,7 @@ body {
     width: 100%;
 }
 
-.sidebar {
+#sidebar {
     width: 100px;
     height: 500px;
 
