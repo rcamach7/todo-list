@@ -9,13 +9,23 @@
 </head>
     <body>
         <div class="title">
-            <h1>To Do App</h1>
-            <button id="popupForm">Click To Add New Note</button>
+            <h1 class="websiteTitle">// TODO:</h1>
+        </div>
+        <div class="navBar">
+            <button id="addFolder">New Folder</button>
+            <button id="popupForm">New Task</button>
         </div>
 
-        <!-- TODO: Add a new section where it will list the current note folders. -->
+        <form id="submitNewFolder">
+            <h2>Add New Folder</h2>
+            <label for="name">Folder Name:</label><br>
+            <input type="text" id="name" required><br>
+
+            <input id="newFolder" type="submit">
+        </form>
+
         <form id="submitNewNoteForm">
-            <h2>Add New Note</h2>
+            <h2>Add New Task</h2>
 
             <label for="title">Title:</label><br>
             <input type="text" id="title" required><br>
