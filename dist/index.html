@@ -10,8 +10,10 @@
     <body>
         <div class="title">
             <h1>To Do App</h1>
+            <button id="popupForm">Click To Add New Note</button>
         </div>
 
+        <!-- TODO: Add a new section where it will list the current note folders. -->
         <form id="submitNewNoteForm">
             <h2>Add New Note</h2>
 
@@ -28,16 +30,15 @@
                 <option value="important">important</option>
             </select><br>
 
+            <label for="folder">Folder:</label><br>
+            <select id="folder">
+            </select><br>
+
             <input id="newNote" type="submit">
         </form>
 
         <div class="contentContainer">
-            <aside class="sidebar">
-                <p>Folder</p>
-                <p>Folder</p>
-
-                <button id="popupForm">Click To Add New Note</button>
-                <button id="printNotes">Print Notes Array [TESTING ONLY]</button>
+            <aside id="sidebar">
 
             </aside>
 
