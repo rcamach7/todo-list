@@ -1,81 +1,30 @@
+html,
+body {
+   margin: 0;
+   padding: 0;
+}
+
 html {
     background-color: #9cdaed;
-    height: 100%;
-    margin: 0 auto;
     font-family: "Lucida Grande", serif;
+    height: 100vh;
 }
 
-body {
-    margin: 0 auto;
-    height: 100%;
-}
-
-/*Title Styling*/
-.title {
-    color: white;
-
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 10px;
-}
-
-.websiteTitle {
-    text-align: center;
-}
-
-.navBar {
-    background-color: red;
-    padding: 5px;
-}
-
-.navBar button {
-    background-color: #ffffff;
-    border: none;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-}
-
-/*Main Website Contents*/
-.contentContainer {
-    display: flex;
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-}
-
-#sidebar {
-    width: 210px;
-
-    text-align: center;
-    border-right: black solid 2px;
-}
-
-#notesContainer {
-    display: flex;
-    gap: 20px;
-    justify-content: left;
-    flex-flow: wrap;
-
-    width: 100%;
-    padding: 10px;
-}
-
+/* FORM AND FORM BUTTONS */
 form {
     text-align: center;
     color: white;
 
     display: none;
-    position: fixed; /* Stay in place */
-    width: 100%; /* Full width */
+    position: fixed;
+    width: 100%;
     height: 100%;
     padding-bottom: 10%;
 
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.9);
 }
 
-#newNote {
+#newTask {
     margin-top: 20px;
     width: 250px;
     background-color: #ffffff;
@@ -87,9 +36,89 @@ form {
     cursor: pointer;
 }
 
-/*Note Container Styling*/
+/*Title Styling*/
+.title {
+    color: white;
+    height: 10vh;
 
-.noteCard {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.title h1 {
+    padding-top: 10px;
+    margin: 0;
+}
+
+.websiteTitle {
+    text-align: center;
+}
+
+/*MAIN CONTAINER*/
+.contentContainer {
+    display: flex;
+    height: 90vh;
+}
+
+/* SIDEBAR STYLING */
+.buttonOptions {
+    display: flex;
+    width: 100%;
+}
+
+#popupForm {
+    border-left: black solid 1px;
+}
+
+.asideContainer {
+    width: 220px;
+
+    text-align: center;
+
+    border-right: rgba(0, 0, 0, 0.7) solid 2px;
+    border-bottom: rgba(0, 0, 0, 0.7) solid 2px;
+}
+
+.asideContainer button {
+    background-color: green;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin: 10px 0 10px 0;
+
+    flex: 1;
+}
+
+#sidebar {
+    height: 80%;
+}
+
+#sidebar p {
+    margin: 0 0 10px 0;
+    padding: 5px 0 5px 0; 
+
+    cursor: pointer;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/*TASKS CONTAINER*/
+#tasksContainer {
+    display: flex;
+    gap: 20px;
+    justify-content: left;
+    flex-flow: wrap;
+
+    width: 100%;
+    padding: 10px;
+}
+
+/*Task CARD Styling*/
+.taskCard {
     width: 200px;
     height: 200px;
 

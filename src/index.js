@@ -16,7 +16,7 @@ class Task {
 
 class TaskFolder {
     constructor(folderName) {
-        this.folderName = folderName;
+        this.folderName = folderName.toUpperCase();
         this.myTasks = [];
     }
 
@@ -51,20 +51,20 @@ function printSidebar() {
 
 function displayTasks(folderName) {
     collection.map( (folder) => {
-        // If we find the folder requested we print out its notes
-        if (folder.getFolderName() === folderName) {
-            // Clear current notes displayed
-            const taskContainer = document.getElementById("notesContainer");
+        // If we find the folder requested we print out its task
+        if (folder.getFolderName() === folderName.toUpperCase()) {
+            // Clear current task displayed
+            const taskContainer = document.getElementById("tasksContainer");
             taskContainer.innerHTML = "";
 
-            // Start grabbing new notes to be displayed
+            // Start grabbing new task to be displayed
             const currentTasks = folder.getTasks();
-            currentTasks.map( (note) => {
-                // Create the note "card" to display all of its contents
+            currentTasks.map( (task) => {
+                // Create the task "card" to display all of its contents
                 const taskCard = document.createElement("div");
-                taskCard.classList.add("noteCard");
+                taskCard.classList.add("taskCard");
 
-                const contents = note.returnInArray();
+                const contents = task.returnInArray();
                 contents.map((key)=>{
                     const p = document.createElement("p");
                     p.textContent = key;
@@ -82,9 +82,9 @@ popupForm.addEventListener("click", ()=> {
     togglePopup();
 });
 function togglePopup() {
-    const form = document.getElementById("submitNewNoteForm");
+    const form = document.getElementById("submitNewTaskForm");
     
-    // Before we display the notes - we must add all available folders - also clears any previous options.
+    // Before we display the tasks - we must add all available folders - also clears any previous options.
     const select = document.getElementById("folder");
     select.innerHTML = "";
 
@@ -102,14 +102,14 @@ function togglePopup() {
         form.style.display = "none";
     }
 }
-// Add new note to our array after completion of form
-const btn = document.getElementById("newNote");
+// Add new task to our array after completion of form
+const btn = document.getElementById("newTask");
 btn.addEventListener("click", (e) => {
     e.preventDefault(); 
-    // Create New Note
+    // Create New task
     const newTask = new Task(e.target.form.title.value, e.target.form.description.value, e.target.form.priority.value);
     
-    // Find folder that user is adding note to
+    // Find folder that user is adding task to
     collection.map( (folder) => {
         if (folder.getFolderName() === e.target.form.folder.value) {
             folder.addTask(newTask);
@@ -155,7 +155,7 @@ const newTask = new Task("Get Healthy", "Take pain med and drink plenty of water
 const newTaskTwo = new Task("Meditate", "Go over my goals and then silence mind", "important");
 
 const defaultTasks = new TaskFolder("default");
-const mentalHealth = new TaskFolder("mental Health");
+const mentalHealth = new TaskFolder("mental health");
 
 
 defaultTasks.addTask(newTask);
