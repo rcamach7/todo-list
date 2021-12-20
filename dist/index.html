@@ -11,10 +11,6 @@
         <div class="title">
             <h1 class="websiteTitle">// TODO:</h1>
         </div>
-        <div class="navBar">
-            <button id="addFolder">New Folder</button>
-            <button id="popupForm">New Task</button>
-        </div>
 
         <form id="submitNewFolder">
             <h2>Add New Folder</h2>
@@ -24,7 +20,7 @@
             <input id="newFolder" type="submit">
         </form>
 
-        <form id="submitNewNoteForm">
+        <form id="submitNewTaskForm">
             <h2>Add New Task</h2>
 
             <label for="title">Title:</label><br>
@@ -44,16 +40,19 @@
             <select id="folder">
             </select><br>
 
-            <input id="newNote" type="submit">
+            <input id="newTask" type="submit">
         </form>
 
         <div class="contentContainer">
-            <aside id="sidebar">
-
-            </aside>
-
-            <div id="notesContainer">
-                <p class="h">List Of Notes!</p>
+            <div class="asideContainer">
+                <div class="buttonOptions">
+                    <button id="addFolder">New Folder</button>
+                    <button id="popupForm">Add Task</button>
+                </div>
+                <aside id="sidebar">
+                </aside>
+            </div>
+            <div id="tasksContainer">
             </div>
 
         </div>
