@@ -2,7 +2,7 @@ import "./style.css";
 
 let collection = [];
 
-class Note {
+class Task {
     constructor(titleIn, descriptionIn, priorityIn) {
         this.title = titleIn;
         this.description = descriptionIn;
@@ -14,18 +14,18 @@ class Note {
     }
 }
 
-class NoteFolder {
+class TaskFolder {
     constructor(folderName) {
         this.folderName = folderName;
-        this.myNotes = [];
+        this.myTasks = [];
     }
 
-    addNote(Note) {
-        this.myNotes.push(Note);
+    addTask(Task) {
+        this.myTasks.push(Task);
     }
 
-    getNotes() {
-        return this.myNotes;
+    getTasks() {
+        return this.myTasks;
     }
 
     getFolderName() {
@@ -42,35 +42,35 @@ function printSidebar() {
         const p = document.createElement("p");
         p.textContent = folder.getFolderName();
         p.addEventListener("click", () => {
-            displayNotes(folder.getFolderName());
+            displayTasks(folder.getFolderName());
         });
 
         sidebar.appendChild(p);
     })
 }
 
-function displayNotes(folderName) {
+function displayTasks(folderName) {
     collection.map( (folder) => {
         // If we find the folder requested we print out its notes
         if (folder.getFolderName() === folderName) {
             // Clear current notes displayed
-            const noteContainer = document.getElementById("notesContainer");
-            noteContainer.innerHTML = "";
+            const taskContainer = document.getElementById("notesContainer");
+            taskContainer.innerHTML = "";
 
             // Start grabbing new notes to be displayed
-            const currentNotes = folder.getNotes();
-            currentNotes.map( (note) => {
+            const currentTasks = folder.getTasks();
+            currentTasks.map( (note) => {
                 // Create the note "card" to display all of its contents
-                const noteCard = document.createElement("div");
-                noteCard.classList.add("noteCard");
+                const taskCard = document.createElement("div");
+                taskCard.classList.add("noteCard");
 
                 const contents = note.returnInArray();
                 contents.map((key)=>{
                     const p = document.createElement("p");
                     p.textContent = key;
-                    noteCard.appendChild(p);
+                    taskCard.appendChild(p);
                 });
-                noteContainer.appendChild(noteCard);
+                taskContainer.appendChild(taskCard);
             })
         }
     })
@@ -81,7 +81,6 @@ const popupForm = document.getElementById("popupForm");
 popupForm.addEventListener("click", ()=> {
     togglePopup();
 });
-
 function togglePopup() {
     const form = document.getElementById("submitNewNoteForm");
     
@@ -103,41 +102,68 @@ function togglePopup() {
         form.style.display = "none";
     }
 }
-
 // Add new note to our array after completion of form
 const btn = document.getElementById("newNote");
 btn.addEventListener("click", (e) => {
     e.preventDefault(); 
     // Create New Note
-    const newNote = new Note(e.target.form.title.value, e.target.form.description.value, e.target.form.priority.value);
+    const newTask = new Task(e.target.form.title.value, e.target.form.description.value, e.target.form.priority.value);
     
     // Find folder that user is adding note to
     collection.map( (folder) => {
         if (folder.getFolderName() === e.target.form.folder.value) {
-            folder.addNote(newNote);
+            folder.addTask(newTask);
         }
     })
 
     // Display the contents of notes of selected folder
-    displayNotes(e.target.form.folder.value);
+    displayTasks(e.target.form.folder.value);
 
     // Hides the form
     togglePopup();
 });
 
+// Add new folder to our collection
+const newFolderBtn = document.getElementById("addFolder");
+newFolderBtn.addEventListener("click", (e) => {
+    const form = document.getElementById("submitNewFolder");
+
+    if (form.style.display === "none" || form.style.display === "") {
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+    }
+});
+const submitNewFolderBtn = document.getElementById("newFolder");
+submitNewFolderBtn.addEventListener("click", (e)=> {
+    e.preventDefault();
+    const newFolder = new TaskFolder(e.target.form.name.value);
+    collection.push(newFolder);
+
+    printSidebar();    
+
+    const form = document.getElementById("submitNewFolder");
+    if (form.style.display === "none" || form.style.display === "") {
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+    }
+});
+
 // Create Test Data
-const newNote = new Note("Get Healthy", "Take pain med and drink plenty of water", "important");
-const newNoteTwo = new Note("Meditate", "Go over my goals and then silence mind", "important");
+const newTask = new Task("Get Healthy", "Take pain med and drink plenty of water", "important");
+const newTaskTwo = new Task("Meditate", "Go over my goals and then silence mind", "important");
 
-const defaultNotes = new NoteFolder("default");
-const mentalHealth = new NoteFolder("mental Health");
+const defaultTasks = new TaskFolder("default");
+const mentalHealth = new TaskFolder("mental Health");
 
 
-defaultNotes.addNote(newNote);
-collection.push(defaultNotes);
+defaultTasks.addTask(newTask);
+collection.push(defaultTasks);
 
-mentalHealth.addNote(newNoteTwo);
+mentalHealth.addTask(newTaskTwo);
 collection.push(mentalHealth);
 
 // Default Startup
 printSidebar();
+displayTasks("default");
