@@ -36,6 +36,10 @@ class TaskFolder {
         return this.myTasks;
     }
 
+    deleteTaskByIndex(taskIndex) {
+        this.myTasks.splice(taskIndex, 1);
+    }
+
     getFolderName() {
         return this.folderName;
     }
@@ -77,8 +81,14 @@ function displayTasks(folderName) {
                 taskCard.classList.add("taskCard");
 
                 const contents = task.returnInArray();
-                contents.map((key)=>{
+                contents.map((key, index)=>{
                     const p = document.createElement("p");
+
+                    // Means we are currently adding the "priority" section to the taskCard.
+                    if(index === 1) {
+                        p.classList.add("priorityKey");
+                    }
+
                     p.textContent = key;
                     taskCard.appendChild(p);
                 });
@@ -88,8 +98,41 @@ function displayTasks(folderName) {
                     displayDetails(folder.getFolderName(), task.getTitle());
                 });
 
+                // Add button that allows this item to be deleted.
+                taskCard.appendChild(addDeleteButton(folder.getFolderName(), task.getTitle()));
+
                 taskContainer.appendChild(taskCard);
             })
+        }
+    })
+}
+
+function addDeleteButton(folderName, taskTitle) {
+    const btn = document.createElement("button");
+    btn.classList.add("deleteTask");
+    btn.textContent = "Delete";
+
+    btn.addEventListener("click", (e)=> {
+        let indexToDelete = -1;
+        collection.map( (folder)=> {
+            if (folder.getFolderName() === folderName) {
+                folder.getTasks().map( (task, taskIndex) => {
+                    if (task.getTitle() === taskTitle) {
+                        indexToDelete = taskIndex;
+                    }
+                })
+            }
+        })
+        deleteTask(folderName, indexToDelete);
+        displayTasks(folderName);
+    })
+    return btn;
+}
+
+function deleteTask(folderName, taskIndex) {
+    collection.map( (folder) => {
+        if (folder.getFolderName() === folderName) {
+            folder.deleteTaskByIndex(taskIndex);
         }
     })
 }
@@ -105,17 +148,22 @@ function displayDetails(folderName, taskName) {
                 if(task.getTitle() === taskName) {
                     // Gotcha
                     task.returnAll().map( (key, index) => {
+                        const desc = document.createElement("p");
+                        desc.classList.add("detailsKeys")
+                        desc.textContent = Object.keys(task)[index].toUpperCase() + ":";
+
                         const  p = document.createElement("p");
                         p.classList.add("taskDetails");
-                        p.textContent = `${Object.keys(task)[index].toUpperCase()}: ${key}`;
+                        p.textContent = key;
 
+                        rightSidebar.appendChild(desc);
                         rightSidebar.appendChild(p);
+                        rightSidebar.appendChild(document.createElement("br"));
                     })
                 }
             })
         }
     })
-
 }
 
 // Toggle display of form to submit a new one
