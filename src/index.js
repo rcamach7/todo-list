@@ -9,7 +9,15 @@ class Task {
         this.priority = priorityIn;
     }
 
+    getTitle() {
+        return this.title;
+    }
+
     returnInArray() {
+        return [this.title, this.priority];
+    }
+
+    returnAll() {
         return [this.title, this.description, this.priority];
     }
 }
@@ -50,6 +58,10 @@ function printSidebar() {
 }
 
 function displayTasks(folderName) {
+    // This clears any currently displayed tasks that was selected on the right sidebar.
+    const rightSidebar = document.getElementById("rightSidebar");
+    rightSidebar.innerHTML = "";
+
     collection.map( (folder) => {
         // If we find the folder requested we print out its task
         if (folder.getFolderName() === folderName.toUpperCase()) {
@@ -70,10 +82,40 @@ function displayTasks(folderName) {
                     p.textContent = key;
                     taskCard.appendChild(p);
                 });
+
+                // Add event listener, so when clicked, it's full details will be displayed in right sidebar.
+                taskCard.addEventListener("click", ()=> {
+                    displayDetails(folder.getFolderName(), task.getTitle());
+                });
+
                 taskContainer.appendChild(taskCard);
             })
         }
     })
+}
+
+function displayDetails(folderName, taskName) {
+    const rightSidebar = document.getElementById("rightSidebar");
+    rightSidebar.innerHTML = "";
+
+    collection.map( (folder) => {
+        if (folder.getFolderName() === folderName) {
+            const folderTasks = folder.getTasks();
+            folderTasks.map( (task) => {
+                if(task.getTitle() === taskName) {
+                    // Gotcha
+                    task.returnAll().map( (key, index) => {
+                        const  p = document.createElement("p");
+                        p.classList.add("taskDetails");
+                        p.textContent = `${Object.keys(task)[index].toUpperCase()}: ${key}`;
+
+                        rightSidebar.appendChild(p);
+                    })
+                }
+            })
+        }
+    })
+
 }
 
 // Toggle display of form to submit a new one
@@ -159,6 +201,7 @@ const mentalHealth = new TaskFolder("mental health");
 
 
 defaultTasks.addTask(newTask);
+defaultTasks.addTask(newTaskTwo);
 collection.push(defaultTasks);
 
 mentalHealth.addTask(newTaskTwo);

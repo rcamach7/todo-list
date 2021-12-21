@@ -72,11 +72,11 @@ form {
 
 .asideContainer {
     width: 220px;
+    flex: 1;
 
     text-align: center;
 
     border-right: rgba(0, 0, 0, 0.7) solid 2px;
-    border-bottom: rgba(0, 0, 0, 0.7) solid 2px;
 }
 
 .asideContainer button {
@@ -109,20 +109,47 @@ form {
 /*TASKS CONTAINER*/
 #tasksContainer {
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    justify-content: left;
-    flex-flow: wrap;
+    align-items: left;
 
     width: 100%;
     padding: 10px;
+
+    flex: 4;
 }
 
 /*Task CARD Styling*/
 .taskCard {
-    width: 200px;
-    height: 200px;
+    width: 92.5%;
+    height: 50px;
+    padding: 0 10px 0 10px;
 
     text-align: center;
-
+    color: white;
     border: black dashed 2px;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.taskCard:hover {
+    transform: scale(1.01);
+}
+
+/* Right Sidebar */
+#rightSidebar {
+    flex: 2; 
+    text-align: left;
+    border-left: rgba(0, 0, 0, 0.7) solid 2px;
+}
+
+.taskDetails {
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 0 5px 0;
 }
