@@ -1,49 +1,7 @@
 import "./style.css";
+import {Task, TaskFolder, DefaultData} from "./objects";
 
 let collection = [];
-
-class Task {
-    constructor(titleIn, descriptionIn, priorityIn) {
-        this.title = titleIn;
-        this.description = descriptionIn;
-        this.priority = priorityIn;
-    }
-
-    getTitle() {
-        return this.title;
-    }
-
-    returnInArray() {
-        return [this.title, this.priority];
-    }
-
-    returnAll() {
-        return [this.title, this.description, this.priority];
-    }
-}
-
-class TaskFolder {
-    constructor(folderName) {
-        this.folderName = folderName.toUpperCase();
-        this.myTasks = [];
-    }
-
-    addTask(Task) {
-        this.myTasks.push(Task);
-    }
-
-    getTasks() {
-        return this.myTasks;
-    }
-
-    deleteTaskByIndex(taskIndex) {
-        this.myTasks.splice(taskIndex, 1);
-    }
-
-    getFolderName() {
-        return this.folderName;
-    }
-}
 
 // Print folder names to sidebar section
 function printSidebar() {
@@ -61,6 +19,8 @@ function printSidebar() {
     })
 }
 
+// Display a specific folders tasks to the main container. Calls "default" folder on boot up
+// and then get's recalled anytime user selects a different folder to view.
 function displayTasks(folderName) {
     // This clears any currently displayed tasks that was selected on the right sidebar.
     const rightSidebar = document.getElementById("rightSidebar");
@@ -107,6 +67,7 @@ function displayTasks(folderName) {
     })
 }
 
+// Returns a button and when clicked on, deletes the specific task from whichever folder it belongs to.
 function addDeleteButton(folderName, taskTitle) {
     const btn = document.createElement("button");
     btn.classList.add("deleteTask");
@@ -129,6 +90,7 @@ function addDeleteButton(folderName, taskTitle) {
     return btn;
 }
 
+// Helper function for task deletion method
 function deleteTask(folderName, taskIndex) {
     collection.map( (folder) => {
         if (folder.getFolderName() === folderName) {
@@ -137,6 +99,7 @@ function deleteTask(folderName, taskIndex) {
     })
 }
 
+// Anytime a specific task is clicked on, this function displays all of its contents on the right sidebar.
 function displayDetails(folderName, taskName) {
     const rightSidebar = document.getElementById("rightSidebar");
     rightSidebar.innerHTML = "";
@@ -240,21 +203,10 @@ submitNewFolderBtn.addEventListener("click", (e)=> {
     }
 });
 
-// Create Test Data
-const newTask = new Task("Get Healthy", "Take pain med and drink plenty of water", "important");
-const newTaskTwo = new Task("Meditate", "Go over my goals and then silence mind", "important");
-
-const defaultTasks = new TaskFolder("default");
-const mentalHealth = new TaskFolder("mental health");
-
-
-defaultTasks.addTask(newTask);
-defaultTasks.addTask(newTaskTwo);
-collection.push(defaultTasks);
-
-mentalHealth.addTask(newTaskTwo);
-collection.push(mentalHealth);
-
 // Default Startup
+const loadDefaultData = DefaultData.returnData();
+loadDefaultData.map( (dataPoint) => {
+    collection.push(dataPoint);
+});
 printSidebar();
 displayTasks("default");
