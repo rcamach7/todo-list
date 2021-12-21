@@ -4,7 +4,7 @@ Simple to do app application that helps to manage your personal productivity.
 
 ### Try It!
 
-This site was built using [GitHub Pages](https://rcamach7.github.io/restaurant-menu-page/).
+This site was built using [GitHub Pages](https://rcamach7.github.io/todo-list/).
 
 #### Built Using:
 
