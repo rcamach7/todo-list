@@ -57,7 +57,7 @@ form {
 /*MAIN CONTAINER*/
 .contentContainer {
     display: flex;
-    height: 90vh;
+    height: 85vh;
 }
 
 /* SIDEBAR STYLING */
@@ -67,28 +67,28 @@ form {
 }
 
 #popupForm {
-    border-left: black solid 1px;
+    border-left: black solid 2px;
 }
 
 .asideContainer {
     width: 220px;
+    flex: 1;
 
     text-align: center;
 
     border-right: rgba(0, 0, 0, 0.7) solid 2px;
-    border-bottom: rgba(0, 0, 0, 0.7) solid 2px;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .asideContainer button {
-    background-color: green;
+    background-color: white;
     border: none;
     color: black;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
-    margin: 10px 0 10px 0;
-
+    margin: 0 0 10px 0;
     flex: 1;
 }
 
@@ -102,27 +102,79 @@ form {
 
     cursor: pointer;
 
-    color: white;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: white;
+}
+
+#sidebar p:hover {
+    background-color: #9cdaed;
 }
 
 /*TASKS CONTAINER*/
 #tasksContainer {
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    justify-content: left;
-    flex-flow: wrap;
+    align-items: left;
 
     width: 100%;
     padding: 10px;
+
+    flex: 5;
 }
 
 /*Task CARD Styling*/
 .taskCard {
-    width: 200px;
-    height: 200px;
+    width: 92.5%;
+    height: 50px;
+    padding: 0 10px 0 10px;
 
     text-align: center;
-
+    color: white;
     border: black dashed 2px;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    cursor: pointer;
+
+    display: flex;
+}
+
+.taskCard:hover {
+    transform: scale(1.01);
+}
+
+.priorityKey {
+    margin-left: auto;
+    padding-right: 15px;
+}
+
+.deleteTask {
+    height: 50%;
+    margin-top: 15px;
+    color: black;
+    background-color: red;
+}
+
+/* Right Sidebar */
+#rightSidebar {
+    padding: 5px;
+    flex: 1; 
+    text-align: left;
+    border-left: rgba(0, 0, 0, 0.7) solid 2px;
+}
+
+#rightSidebar p {
+    margin: 0;
+    text-align: center;
+}
+
+.detailsKeys {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+footer {
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 5vh;
 }
