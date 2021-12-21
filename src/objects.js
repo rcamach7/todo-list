@@ -9,6 +9,18 @@ class Task {
         return this.title;
     }
 
+    setTitle(newTitle) {
+        this.title = newTitle;
+    }
+
+    setDescription(newDesc) {
+        this.description = newDesc;
+    }
+
+    setPriority(newPri) {
+        this.priority = newPri;
+    }
+
     returnInArray() {
         return [this.title, this.priority];
     }
@@ -42,21 +54,30 @@ class TaskFolder {
 }
 
 const DefaultData = (() => {
-    const newTask = new Task("Get Healthy", "Take pain med and drink plenty of water", "important");
-    const newTaskTwo = new Task("Meditate", "Go over my goals and then silence mind", "important");
+    const newTask = new Task("Stay Healthy", "run 2 miles after school", "important");
+    const newTaskTwo = new Task("Submit Final Paper", "ask jon to revise my essay and submit paper to prof", "important");
+    const newTaskThree = new Task("Order Extra Coffee Pods", "buy bulk from sams for extra savings", "somewhat important");
+    const newTaskFour = new Task("Monthly Financial Report", "submit excel report of this months finances to bob", "important");
+    const newTaskFive = new Task("Replacement Hat", "lost my had need new one", "not important");
 
-    const defaultTasks = new TaskFolder("default");
-    const mentalHealth = new TaskFolder("mental health");   
+    const defaultTasks = new TaskFolder("tasks");
+    const thisWeek = new TaskFolder("this week");  
+    const thisMonth = new TaskFolder("this month"); 
 
     const setupDefault = () => {
         defaultTasks.addTask(newTask);
         defaultTasks.addTask(newTaskTwo);
-        mentalHealth.addTask(newTaskTwo);
+        defaultTasks.addTask(newTaskThree);
+        defaultTasks.addTask(newTaskFive);
+
+
+        thisWeek.addTask(newTaskTwo);
+        thisWeek.addTask(newTaskFour);
     }
 
     const returnData = () => {
         setupDefault();
-        return [defaultTasks, mentalHealth];
+        return [defaultTasks, thisWeek, thisMonth];
     }
 
     return {

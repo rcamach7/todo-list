@@ -151,20 +151,35 @@ form {
     height: 50%;
     margin-top: 15px;
     color: black;
-    background-color: red;
+    background-color: white;
+}
+
+.importantPriority {
+    border: solid red 5px;
 }
 
 /* Right Sidebar */
 #rightSidebar {
+    font-size: 25px;
     padding: 5px;
     flex: 1; 
-    text-align: left;
     border-left: rgba(0, 0, 0, 0.7) solid 2px;
 }
 
 #rightSidebar p {
     margin: 0;
     text-align: center;
+}
+
+.modifyTaskButton {
+    width: 100%;
+    background-color: white;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 25px;
 }
 
 .detailsKeys {
