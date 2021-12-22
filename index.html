@@ -1,65 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>To Do List</title>
-</head>
-    <body>
-        <div class="title">
-            <h1 class="websiteTitle">// TODO:</h1>
-        </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>To Do List</title>
+	</head>
+	<body>
+		<div class="title">
+			<h1 class="websiteTitle">// TODO:</h1>
+		</div>
 
-        <form id="submitNewFolder">
-            <h2>Add New Folder</h2>
-            <label for="name">Folder Name:</label><br>
-            <input type="text" id="name" required><br>
+		<form id="submitNewFolder">
+			<h2>Add New Folder</h2>
+			<label for="name">Folder Name:</label><br />
+			<input type="text" id="name" required /><br />
 
-            <input id="newFolder" type="submit">
-        </form>
+			<input id="newFolder" type="submit" />
+		</form>
 
-        <form id="submitNewTaskForm">
-            <h2>Add New Task</h2>
+		<form id="submitNewTaskForm">
+			<h2>Add New Task</h2>
 
-            <label for="title">Title:</label><br>
-            <input type="text" id="title" required><br>
+			<label for="title">Title:</label><br />
+			<input type="text" id="title" required /><br />
 
-            <label for="description">Description:</label><br>
-            <input type="text" id="description" required><br>
+			<label for="description">Description:</label><br />
+			<input type="text" id="description" required /><br />
 
-            <label for="priority">Priority</label><br>
-            <select id="priority">
-                <option value="not important">not important</option>
-                <option value="somewhat important">somewhat important</option>
-                <option value="important">important</option>
-            </select><br>
+			<label for="priority">Priority</label><br />
+			<select id="priority">
+				<option value="not important">not important</option>
+				<option value="somewhat important">somewhat important</option>
+				<option value="important">important</option></select
+			><br />
 
-            <label for="folder">Folder:</label><br>
-            <select id="folder">
-            </select><br>
+			<label for="folder">Folder:</label><br />
+			<select id="folder"></select
+			><br />
 
-            <input id="newTask" type="submit">
-        </form>
+			<input id="newTask" type="submit" />
+		</form>
 
-        <div class="contentContainer">
-            <div class="asideContainer">
-                <div class="buttonOptions">
-                    <button id="addFolder">New Folder</button>
-                    <button id="popupForm">Add Task</button>
-                </div>
-                <aside id="sidebar">
-                </aside>
-            </div>
-            <div id="tasksContainer">
-            </div>
-            <aside id="rightSidebar">
-            </aside>
-        </div>
-        <footer>
-            Copyright © 2021 Ricardo Camacho Mireles
-        </footer>
-        <script src="main.js"></script>
-    </body>
+		<div class="contentContainer">
+			<div class="asideContainer">
+				<div class="buttonOptions">
+					<button id="addFolder">New Folder</button>
+					<button id="popupForm">Add Task</button>
+				</div>
+				<aside id="sidebar"></aside>
+			</div>
+			<div id="tasksContainer"></div>
+			<aside id="rightSidebar"></aside>
+		</div>
+		<footer>Copyright © 2021 Ricardo Camacho Mireles</footer>
+		<script src="main.js"></script>
+	</body>
 </html>
