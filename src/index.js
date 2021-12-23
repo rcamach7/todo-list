@@ -201,6 +201,16 @@ function togglePopup() {
 const btn = document.getElementById("newTask");
 btn.addEventListener("click", (e) => {
 	e.preventDefault();
+
+	// Form Validation
+	if (
+		e.target.form.title.value === "" ||
+		e.target.form.description.value === ""
+	) {
+		alert("Please fill out all fields!");
+		return;
+	}
+
 	// Create New task
 	const newTask = new Task(
 		e.target.form.title.value,
@@ -234,6 +244,12 @@ newFolderBtn.addEventListener("click", (e) => {
 const submitNewFolderBtn = document.getElementById("newFolder");
 submitNewFolderBtn.addEventListener("click", (e) => {
 	e.preventDefault();
+
+	// Form Validation
+	if (e.target.form.name.value === "") {
+		alert("Please enter a folder name!");
+		return;
+	}
 
 	const newFolder = new TaskFolder(e.target.form.name.value);
 	collection.push(newFolder);
