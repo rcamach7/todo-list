@@ -11,50 +11,50 @@
 	</head>
 	<body>
 		<div class="title">
-			<h1 class="websiteTitle">// TODO:</h1>
+			<h1 id="gg">//To-Do: Productivity Tracker</h1>
 		</div>
-
-		<form id="submitNewFolder">
-			<h2>Add New Folder</h2>
-			<label for="name">Folder Name:</label><br />
-			<input type="text" id="name" required /><br />
-
-			<input id="newFolder" type="submit" />
-		</form>
-
-		<form id="submitNewTaskForm">
-			<h2>Add New Task</h2>
-
-			<label for="title">Title:</label><br />
-			<input type="text" id="title" required /><br />
-
-			<label for="description">Description:</label><br />
-			<input type="text" id="description" required /><br />
-
-			<label for="priority">Priority</label><br />
-			<select id="priority">
-				<option value="not important">not important</option>
-				<option value="somewhat important">somewhat important</option>
-				<option value="important">important</option></select
-			><br />
-
-			<label for="folder">Folder:</label><br />
-			<select id="folder"></select
-			><br />
-
-			<input id="newTask" type="submit" />
-		</form>
-
 		<div class="contentContainer">
 			<div class="asideContainer">
 				<div class="buttonOptions">
-					<button id="addFolder">New Folder</button>
-					<button id="popupForm">Add Task</button>
+					<button id="addFolder" class="customButton">New Folder</button>
+					<button id="popupForm" class="customButton">Add Task</button>
 				</div>
+				<!-- New Folder Form -->
+				<form id="submitNewFolder">
+					<label for="name">Folder Name</label>
+					<input type="text" id="name" /><br />
+
+					<input id="newFolder" type="submit" class="customButton"/>
+				</form>
+				<!-- New Task Form -->
+				<form id="submitNewTaskForm">
+					<label for="title">Title:</label><br />
+					<input type="text" id="title" required/><br />
+
+					<label for="description">Description:</label><br />
+					<textarea type="text" id="description" rows="5" required /></textarea>
+
+					<label for="priority">Priority</label><br />
+					<select id="priority">
+						<option value="not important">not important</option>
+						<option value="somewhat important">somewhat important</option>
+						<option value="important">important</option></select
+					><br />
+
+					<label for="folder">Folder:</label><br />
+					<select id="folder"></select
+					><br />
+
+					<input id="newTask" type="submit" class="customButton"/>
+				</form>
+
 				<aside id="sidebar"></aside>
 			</div>
 			<div id="tasksContainer"></div>
-			<aside id="rightSidebar"></aside>
+			<aside id="rightSidebar">
+				<div id="infoBox">
+				</div>
+			</aside>
 		</div>
 		<footer>Copyright © 2021 Ricardo Camacho Mireles</footer>
 		<script src="main.js"></script>
