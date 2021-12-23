@@ -23,8 +23,8 @@ function printSidebar() {
 // and then get's recalled anytime user selects a different folder to view.
 function displayTasks(folderName) {
 	// This clears any currently displayed tasks that was selected on the right sidebar.
-	const rightSidebar = document.getElementById("rightSidebar");
-	rightSidebar.innerHTML = "";
+	const rightSidebarInfoBox = document.getElementById("infoBox");
+	rightSidebarInfoBox.innerHTML = "";
 
 	collection.map((folder) => {
 		// If we find the folder requested we print out its task
@@ -114,7 +114,7 @@ function deleteTask(folderName, taskIndex) {
 
 // Anytime a specific task is clicked on, this function displays all of its contents on the right sidebar.
 function displayDetails(folderName, taskName) {
-	const rightSidebar = document.getElementById("rightSidebar");
+	const rightSidebar = document.getElementById("infoBox");
 	rightSidebar.innerHTML = "";
 
 	collection.map((folder) => {
@@ -126,7 +126,7 @@ function displayDetails(folderName, taskName) {
 					task.returnAll().map((key, index) => {
 						const desc = document.createElement("p");
 						desc.classList.add("detailsKeys");
-						desc.textContent = Object.keys(task)[index].toUpperCase() + ":";
+						desc.textContent = Object.keys(task)[index].toUpperCase();
 
 						const p = document.createElement("p");
 						p.classList.add("taskDetails");
@@ -220,6 +220,9 @@ btn.addEventListener("click", (e) => {
 
 	// Hides the form
 	togglePopup();
+
+	// Reset form to have default values
+	e.target.form.reset();
 });
 
 // Add new folder to our collection
@@ -231,13 +234,16 @@ newFolderBtn.addEventListener("click", (e) => {
 const submitNewFolderBtn = document.getElementById("newFolder");
 submitNewFolderBtn.addEventListener("click", (e) => {
 	e.preventDefault();
+
 	const newFolder = new TaskFolder(e.target.form.name.value);
 	collection.push(newFolder);
 
 	printSidebar();
 
+	// Reset form to have default values and remove it from being displayed
 	const form = document.getElementById("submitNewFolder");
 	displayToggle(form);
+	form.reset();
 });
 
 function displayToggle(form) {
