@@ -1,1 +1,0 @@
-const validateFrom = (form) => {};

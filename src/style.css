@@ -53,6 +53,7 @@ button {
 .contentContainer {
 	display: flex;
 	height: 85vh;
+	width: 100vw;
 }
 
 /* SIDEBAR STYLING */
@@ -121,17 +122,21 @@ button {
 	border-radius: 5px;
 
 	width: 100%;
-	height: 50px;
+	height: 7vh;
 	padding: 0 10px 0 10px;
 
 	text-align: center;
+
 	color: white;
 	border: black dashed 2px;
 	background-color: rgba(0, 0, 0, 0.7);
 
 	cursor: pointer;
 
+	align-items: center;
+	justify-content: center;
 	display: flex;
+	overflow: hidden;
 }
 
 .taskCard:hover {

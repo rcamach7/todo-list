@@ -10,7 +10,6 @@ This site was built using [GitHub Pages](https://rcamach7.github.io/todo-list/).
 
 - Javascript
   - DOM Manipulation
-  - NPM
   - webpack module bundler
   - Object Constructions
   - Event Listeners
